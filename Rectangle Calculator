@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(void)
+{
+    double width, height, area, perimeter;
+
+    // Constants for conversion
+    const double INCH_TO_CM = 2.54;
+
+    // Taking user input for width with validation
+    do {
+        printf("Enter the width of the rectangle (positive number in inches): ");
+        if (scanf("%lf", &width) != 1 || width <= 0) {
+            printf("Invalid input. Please enter a positive number.\n");
+            while (getchar() != '\n'); // Clear input buffer
+        }
+    } while (width <= 0);
+
+    // Taking user input for height with validation
+    do {
+        printf("Enter the height of the rectangle (positive number in inches): ");
+        if (scanf("%lf", &height) != 1 || height <= 0) {
+            printf("Invalid input. Please enter a positive number.\n");
+            while (getchar() != '\n'); // Clear input buffer
+        }
+    } while (height <= 0);
+
+    perimeter = 2 * (height + width);
+    printf("Perimeter of the rectangle = %.2f inches (%.2f cm)\n", perimeter, perimeter * INCH_TO_CM);
+
+    area = height * width;
+    printf("Area of the rectangle = %.2f square inches (%.2f square cm)\n", area, area * INCH_TO_CM * INCH_TO_CM);
+
+    // Additional calculation: Diagonal length
+    double diagonal = sqrt(width * width + height * height);
+    printf("Diagonal length of the rectangle = %.2f inches (%.2f cm)\n", diagonal, diagonal * INCH_TO_CM);
+
+    // Additional check: Determine if it's a square
+    if (width == height) {
+        printf("This rectangle is also a square.\n");
+    }
+
+    return 0;
+}
